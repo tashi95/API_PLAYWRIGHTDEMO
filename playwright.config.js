@@ -18,8 +18,9 @@ export default defineConfig({
     ['list'], // salida en consola
     ['html', {
       outputFolder: 'playwright-report', // carpeta para HTML
-      open: 'never', // no abre automáticamente
-    }]
+      open: 'always', // no abre automáticamente
+    }] 
+    
   ],
   use: {
     screenshot: 'only-on-failure', // captura solo si falla

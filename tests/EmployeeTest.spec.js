@@ -19,6 +19,11 @@ test('POST_Positivo_CrearEmpleado', async ({ request }) => {
   expect(body.status).toBe('success');
   expect(body.message).toBe('Successfully! Record has been added.');
   expect(body.data.name).toContain (dataPositiva.newEmployee.name);
+
+   await test.info().attach('Respuesta API', {
+    body: JSON.stringify(body, null, 2),
+    contentType: 'application/json'
+  });
 });
 
 //TEST: Crear empleado incorrecto (falta campo obligatorio)
@@ -30,6 +35,10 @@ test('POST_Negativo_CrearEmpleadoSinNombre', async ({ request }) => {
   const body = await response.json();
   expect(body.status).toBe('error');
   expect(body.data).toHaveProperty('name')
+   await test.info().attach('Respuesta API', {
+    body: JSON.stringify(body, null, 2),
+    contentType: 'application/json'
+  });
 });
 
 
@@ -44,6 +53,10 @@ test('PUT_Positivo_ActualizarEmpleado', async ({ request }) => {
   expect(body.status).toBe('success');
    expect(body.message).toBe('Successfully! Record has been updated.');
   expect(body.data).toHaveProperty('name', dataPositiva.updatedEmployee.name);
+   await test.info().attach('Respuesta API', {
+    body: JSON.stringify(body, null, 2),
+    contentType: 'application/json'
+  });
 });
 
 
@@ -58,6 +71,10 @@ test('PUT_Negativo_ActualizarConIDInvalido', async ({ request }) => {
   const body = await response.json();
   expect(body.data.length).toBe(0);                   // debe estar vacío
   expect(body.status).toBe('error');
+   await test.info().attach('Respuesta API', {
+    body: JSON.stringify(body, null, 2),
+    contentType: 'application/json'
+  });
 });
 
 
@@ -73,6 +90,10 @@ test('DELETE_Positivo_EliminarEmpleado', async ({ request }) => {
   expect(body.status).toBe('success');
  expect((body.data.id)).toBe(id);
    expect(body.message).toBe('Successfully! Record has been deleted.');
+    await test.info().attach('Respuesta API', {
+    body: JSON.stringify(body, null, 2),
+    contentType: 'application/json'
+  });
 });
 
 //TEST: Obtener todos los empleados
@@ -83,6 +104,10 @@ test('GET_ObtenerTodosLosEmpleados', async ({ request }) => {
   const body = await response.json();
   expect(Array.isArray(body.data)).toBeTruthy();
   expect(body.data.length).toBeGreaterThan(0);
+   await test.info().attach('Respuesta API', {
+    body: JSON.stringify(body, null, 2),
+    contentType: 'application/json'
+  });
 });
 
 //TEST: Obtener empleado por ID caso correcto
@@ -97,7 +122,10 @@ test('GET_Positivo_ObtenerEmpleadoPorID', async ({ request }) => {
   expect(body.data.id).toBeDefined();
   expect(body.data).toHaveProperty("employee_name","Tiger Nixon")
      expect(body.message).toBe('Successfully! Record has been fetched.');
-
+ await test.info().attach('Respuesta API', {
+    body: JSON.stringify(body, null, 2),
+    contentType: 'application/json'
+  });
 });
 
 //  TEST: Obtener empleado por ID inválido
@@ -111,5 +139,8 @@ test('GET_Negative_ObtenerEmpleadoConIDInvalido', async ({ request }) => {
   const body = await response.json();
   expect(body.status).toBe('error');
   expect(body.message).toBe('Record not found');
-
+ await test.info().attach('Respuesta API', {
+    body: JSON.stringify(body, null, 2),
+    contentType: 'application/json'
+  });
 });
