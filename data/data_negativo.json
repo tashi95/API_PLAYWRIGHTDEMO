@@ -1,0 +1,18 @@
+{
+  "missingName": 
+  {
+    "salary": "40000",
+    "age": "25"
+  },
+  "invalidSalary": {
+    "name": "Nombre con salario inválido",
+    "salary": "salario_invalido",
+    "age": "30"
+  },
+   "employeeWrong": {
+    "id": "N",
+     "name": "CLIENTE INCORRECTO",
+    "salary": "0",
+    "age": "0"
+  }
+}

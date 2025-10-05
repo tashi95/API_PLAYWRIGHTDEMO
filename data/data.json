@@ -1,0 +1,19 @@
+{
+  "newEmployee": {
+    "name": "Allan Brito Delgado",
+    "salary": "350000",
+    "age": "36"
+  },
+  "updatedEmployee": {
+    "id":"1",
+    "name": "Armando Guerra Segura",
+    "salary": "40000",
+    "age": "35"
+  },
+  "employeeToDelete": {
+    "id": 21
+  },
+   "employeeToGet": {
+    "id": "1"
+  }
+}
